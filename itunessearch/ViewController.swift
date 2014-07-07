@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var tableData: NSArray = []
+    @IBOutlet var appsTableView : UITableView
                             
     override func viewDidLoad() {
         super.viewDidLoad()
