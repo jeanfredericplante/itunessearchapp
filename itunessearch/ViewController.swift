@@ -40,6 +40,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func searchItunesFor(searchTerm:String) {
     }
     
+    func formatSearchTerm(searchTerm:String) ->String {
+        var formattedString: String = searchTerm
+        formattedString = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        return formattedString
+    }
     
 
 

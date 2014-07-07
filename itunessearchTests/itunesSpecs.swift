@@ -8,7 +8,7 @@ class searchTest: QuickSpec {
     
     override func spec() {
         describe("a search function") {
-            var myVC: ViewController?
+            var myVC: ViewController = ViewController()
             beforeEach {
                  myVC = ViewController()
             }
