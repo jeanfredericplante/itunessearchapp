@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E09B9F3196DF6F500045A8D /* itunesSpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E09B9F2196DF6F500045A8D /* itunesSpecHelper.swift */; };
 		7EAD9A0A196B4CCE00794807 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAD99F4196B49C300794807 /* Quick.framework */; };
 		7EAD9A0B196B4CD500794807 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAD9A03196B49E600794807 /* Nimble.framework */; };
 		7EAD9A0D196B4D2600794807 /* itunesSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD9A0C196B4D2600794807 /* itunesSpecs.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E09B9F2196DF6F500045A8D /* itunesSpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itunesSpecHelper.swift; sourceTree = "<group>"; };
 		7EAD99EA196B49C300794807 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Quick/Quick/Quick.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7EAD99FB196B49E600794807 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Quick/Nimble/Nimble.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7EAD9A0C196B4D2600794807 /* itunesSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itunesSpecs.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				7EE953F41959428900244D5C /* itunessearchTests.swift */,
 				7EAD9A0C196B4D2600794807 /* itunesSpecs.swift */,
 				7EE953F21959428900244D5C /* Supporting Files */,
+				7E09B9F2196DF6F500045A8D /* itunesSpecHelper.swift */,
 			);
 			path = itunessearchTests;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EAD9A0D196B4D2600794807 /* itunesSpecs.swift in Sources */,
+				7E09B9F3196DF6F500045A8D /* itunesSpecHelper.swift in Sources */,
 				7EE953F51959428900244D5C /* itunessearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

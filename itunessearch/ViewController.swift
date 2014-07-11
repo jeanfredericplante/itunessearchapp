@@ -42,7 +42,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func formatSearchTerm(searchTerm:String) ->String {
         var formattedString: String = searchTerm
+        // Replace spaces with +
         formattedString = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+        
+        // Escape non url friendly parts
+        
+
+        
         return formattedString
     }
     
