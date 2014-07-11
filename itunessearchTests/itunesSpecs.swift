@@ -9,16 +9,20 @@ class searchTest: QuickSpec {
     override func spec() {
         
         describe("the spec helper") {
+            var myString: StringHelper = StringHelper()
+            beforeEach {
+                myString = StringHelper(initString: "this is a weird string")
+            }
+            
             it("should be able to index character within a string") {
-                var myString:StringHelper = StringHelper(initString: "this is a weird string")
                 expect(myString.indexChar("w")).to.equal(10)
             }
             
             it("should return -1 when it can't find a character") {
-                var myString:StringHelper = StringHelper(initString: "this is a weird string")
                 expect(myString.indexChar("z")).to.equal(-1)
 
             }
+            
         }
         
         describe("a search function") {

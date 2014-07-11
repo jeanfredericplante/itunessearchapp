@@ -3,8 +3,8 @@
  class StringHelper {
     var sentence: String
     
-    init(initString: String) {
-        self.sentence = initString
+    init(initString: String? = "") {
+        self.sentence = initString!
     }
     
     func indexChar(characterToFind:Character) -> Int {
