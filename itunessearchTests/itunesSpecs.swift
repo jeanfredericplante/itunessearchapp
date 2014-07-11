@@ -20,7 +20,6 @@ class searchTest: QuickSpec {
             
             it("should return -1 when it can't find a character") {
                 expect(myString.indexChar("z")).to.equal(-1)
-
             }
             
         }
@@ -39,14 +38,7 @@ class searchTest: QuickSpec {
             it("should replace non url friendly characters") {
                 let searchTerm = "I've got non url friendly chars"
                 var formattedSearch:String = myVC.formatSearchTerm(searchTerm)
-                // this is really ugly
-                for character in formattedSearch {
-                    if character=="'" {
-                        // search for the index of '
-                        
-                    }
-                  //  expect(formattedSearch.rangeOfString("'"))
-                }
+                expect(StringHelper(initString: formattedSearch).indexChar("'")).to.equal(-1)
             }
         }
     }
