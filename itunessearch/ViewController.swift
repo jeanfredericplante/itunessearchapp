@@ -37,21 +37,50 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func searchItunesFor(searchTerm:String) {
+    func searchItunesFor(searchTerm: String) -> NSArray {
+        var urlPath = "https://itunes.apple.com/search?term=\(formatSearchTerm(searchTerm))&media=software"
+        var url:NSURL = NSURL(string: urlPath)
+        var session = NSURLSession.sharedSession()
+        var result: NSArray = NSArray()
+        var sessionTask = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            println("Task completed")
+            if(error) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            })
+        return result
     }
     
-    func formatSearchTerm(searchTerm:String) ->String {
+    func formatItunesSearchAsJSONArray(data: NSData) -> NSArray {
+        var err: NSError?
+        var results: NSArray
+        var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+        if(err?) {
+            // If there is an error parsing JSON, print it to the console
+            println("JSON Error \(err!.localizedDescription)")
+            results = NSArray()
+        } else {
+         results = jsonResult["results"] as NSArray
+        }
+        
+        return results
+    }
+    
+    func formatSearchTerm(searchTerm: String) ->String {
         var formattedString: String = searchTerm
         // Replace spaces with +
         formattedString = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         
         // Escape non url friendly parts
-        
-
+        formattedString = formattedString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         
         return formattedString
     }
     
+
+
+
 
 
 }

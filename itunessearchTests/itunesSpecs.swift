@@ -36,9 +36,20 @@ class searchTest: QuickSpec {
             }
             
             it("should replace non url friendly characters") {
-                let searchTerm = "I've got non url friendly chars"
+                let searchTerm = "I`ve got non url friendly chars"
                 var formattedSearch:String = myVC.formatSearchTerm(searchTerm)
-                expect(StringHelper(initString: formattedSearch).indexChar("'")).to.equal(-1)
+                expect(StringHelper(initString: formattedSearch).indexChar("`")).to.equal(-1)
+            }
+            
+            it("should have a function to parse JSON results from an itunes search") {
+                let searchResult = "{\"resultCount\":2,\"results\": [{\"kind\":\"software\"}, {\"kind\":\"song\"}]}"
+                var formattedResults:NSArray = myVC.formatSearchResults(searchResult)
+                expect(formattedResults.count).to.equal(2)
+            }
+            
+            it("should return something for a search on Prince") {
+                var searchResults = myVC.searchItunesFor("Prince")
+                expect(searchResults)
             }
         }
     }
