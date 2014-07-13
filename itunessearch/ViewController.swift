@@ -12,12 +12,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var tableData: NSArray = []
     @IBOutlet var appsTableView : UITableView
-                            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        triggerItunesSearchFor("JQ software")
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,7 +38,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func searchItunesFor(searchTerm: String) -> NSArray {
+    func updateTableView(newTableData: NSArray) -> Void {
+        self.tableData = newTableData
+        self.appsTableView.reloadData()
+    }
+    
+    func triggerItunesSearchFor(searchTerm: String) -> Void {
         var urlPath = "https://itunes.apple.com/search?term=\(formatSearchTerm(searchTerm))&media=software"
         var url:NSURL = NSURL(string: urlPath)
         var session = NSURLSession.sharedSession()
@@ -48,9 +54,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 // If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
-            })
-        return result
+            dispatch_async(dispatch_get_main_queue(), {
+                self.updateTableView(self.formatItunesSearchAsJSONArray(data))
+                })
+
+        })
+        sessionTask.resume()
     }
+    
     
     func formatItunesSearchAsJSONArray(searchResults: NSData) -> NSArray {
         var err: NSError?
@@ -61,7 +72,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             println("JSON Error \(err!.localizedDescription)")
             results = NSArray()
         } else {
-         results = jsonResult["results"] as NSArray
+            results = jsonResult["results"] as NSArray
         }
         return results
     }
@@ -77,10 +88,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return formattedString
     }
     
-
-
-
-
-
+    
+    
+    
+    
+    
 }
 
