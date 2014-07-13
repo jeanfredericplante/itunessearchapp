@@ -52,10 +52,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return result
     }
     
-    func formatItunesSearchAsJSONArray(data: NSData) -> NSArray {
+    func formatItunesSearchAsJSONArray(searchResults: NSData) -> NSArray {
         var err: NSError?
         var results: NSArray
-        var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
+        var jsonResult = NSJSONSerialization.JSONObjectWithData(searchResults, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSDictionary
         if(err?) {
             // If there is an error parsing JSON, print it to the console
             println("JSON Error \(err!.localizedDescription)")
@@ -63,7 +63,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
          results = jsonResult["results"] as NSArray
         }
-        
         return results
     }
     

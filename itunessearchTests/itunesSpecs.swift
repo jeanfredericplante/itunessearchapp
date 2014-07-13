@@ -42,8 +42,12 @@ class searchTest: QuickSpec {
             }
             
             it("should have a function to parse JSON results from an itunes search") {
-                let searchResult = "{\"resultCount\":2,\"results\": [{\"kind\":\"software\"}, {\"kind\":\"song\"}]}"
-                var formattedResults:NSArray = myVC.formatSearchResults(searchResult)
+                //let searchResult: NSData = NSData(base: NSURL(string: "https://itunes.apple.com/search?term=jfp&media=software"))
+                // {"resultCount":2,"results": [{"kind":"software"}, {"kind":"song"}]} to base64
+                
+                let myBase64Data = "eyJyZXN1bHRDb3VudCI6MiwicmVzdWx0cyI6IFt7ImtpbmQiOiJzb2Z0d2FyZSJ9LCB7ImtpbmQiOiJzb25nIn1dfQ0K"
+                let searchResult: NSData = NSData(base64Encoding: myBase64Data)
+                var formattedResults: NSArray = myVC.formatItunesSearchAsJSONArray(searchResult)
                 expect(formattedResults.count).to.equal(2)
             }
             
