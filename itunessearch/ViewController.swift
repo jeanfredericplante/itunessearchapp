@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
         
-        cell.text = "Row #\(indexPath.row)"
+        cell.textLabel.text = "Row #\(indexPath.row)"
         cell.detailTextLabel.text = "Subtitle #\(indexPath.row)"
         
         return cell
